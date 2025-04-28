@@ -13,6 +13,7 @@ if [ -f "$DIR/meet_monitor.pid" ]; then
         echo "Meet monitor is not running"
     fi
     rm "$DIR/meet_monitor.pid"
+    rm "$DIR/meet_monitor.log"
 else
     echo "Meet monitor is not running"
 fi 
