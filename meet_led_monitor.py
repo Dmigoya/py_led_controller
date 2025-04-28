@@ -22,8 +22,7 @@ class MeetLEDMonitor:
         Checks if there's a Meet tab open in Safari
         :return: True if Meet is active, False otherwise
         """
-        tabs = self.safari.get_tabs()
-        return any("Meet" in tab for tab in tabs)
+        return self.safari.is_meet_active()
 
     async def update_led_color(self):
         """
