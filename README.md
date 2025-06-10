@@ -8,6 +8,7 @@ A Python application that monitors Google Meet tabs in Safari and controls an LE
 - Controls LED strip via Bluetooth
 - Non-intrusive monitoring (doesn't force Safari to open)
 - Background operation with proper logging
+- Temporary BLE connection per command
 - Easy start/stop scripts
 
 ## Open Source
@@ -100,13 +101,14 @@ tail -f meet_monitor.log
 ## How It Works
 
 1. The monitor checks Safari tabs every second
-2. If a Google Meet tab is found:
+2. Each LED action opens a short BLE connection to send the command
+3. If a Google Meet tab is found:
    - LED turns red
    - Status is logged
-3. If no Meet tabs are found:
+4. If no Meet tabs are found:
    - LED returns to pleasant blue
    - Status is logged
-4. All events are logged with timestamps
+5. All events are logged with timestamps
 
 ## Troubleshooting
 
@@ -131,8 +133,8 @@ tail -f meet_monitor.log
 
 ### Logs
 
-Check `meet_monitor.log` for detailed information about:
-- Connection status
+- Check `meet_monitor.log` for detailed information about:
+- BLE operations
 - Meet detection
 - LED color changes
 - Any errors or warnings

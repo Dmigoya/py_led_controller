@@ -44,16 +44,13 @@ class MeetLEDMonitor:
         Main monitoring loop
         :param check_interval: Time between checks in seconds
         """
-        if await self.led.connect():
-            try:
-                logging.info("Starting Meet LED monitor...")
-                while True:
-                    await self.update_led_color()
-                    await asyncio.sleep(check_interval)
-            except KeyboardInterrupt:
-                logging.info("Stopping monitor...")
-            finally:
-                await self.led.disconnect()
+        try:
+            logging.info("Starting Meet LED monitor...")
+            while True:
+                await self.update_led_color()
+                await asyncio.sleep(check_interval)
+        except KeyboardInterrupt:
+            logging.info("Stopping monitor...")
 
 async def main():
     monitor = MeetLEDMonitor()
